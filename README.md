@@ -10,13 +10,13 @@ ssh-keygen -t ed25519 -C "<your_github_email>"
 * Confirm on your VM with ```ssh -T -i ed25519 git@github.com``` > response should include "You've successfully authenticated..."
 # Clone GitHub repository
 Navigate into the folder you want to clone this repository into. Likely your home folder.
-Enter the following command:
+Next, enter the following command:
 ```
-git clone 
+git clone git@github.com:tribbens/SP25_DS5111_kvu2et.git
 ```
-
+You now have the repository on your VM and can run scripts directly.
 # Initial Setup of VM
-Type the following code into the command line. It will setup the VM.
+Navigate into the folder for the repository you just cloned. Then type the following code into the command line. It will setup the VM.
 ```
 bash init.sh
 ```
