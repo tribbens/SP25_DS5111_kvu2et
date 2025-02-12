@@ -43,7 +43,7 @@ make update
 ```
 make ygainers.csv
 ```
-* Move the new file to "sample_data" by typing:
+* Move the file "ygainers.csv" to "sample_data" by typing:
 ```
 mv ygainers.csv sample_data/
 ```
