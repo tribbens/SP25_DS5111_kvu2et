@@ -34,13 +34,31 @@ make env
 ```
 make update
 ```
+# Activating and Testing
+* Activitate the env with this code:
+```
+. env/bin/activate
+```
 * Let's test the headless browser by typing the following code:
 ```
 make ygainers.csv
 ```
 # Confirming Structure
-After running this code:
+Let's check the structure to confirm everything worked. Type this code, replacing the bracked part with the full path to your project repository:
 ```
-tree SP25_DS5111_kvu2et -I env
+tree <your project-repo> -I env
 ```
-you should have an output similar to mine shown here:
+You should have an output similar to mine shown here:
+```
+/home/ubuntu/SP25_DS5111_kvu2et
+├── README.md
+├── google-chrome-stable_current_amd64.deb
+├── init.sh
+├── makefile
+├── requirements.txt
+├── scripts
+│   └── install_chrome_headless.sh
+├── ygainers.csv
+└── ygainers.html
+```
+## If your output looks similar to mine (paying special attention to "ygainers.csv" showing up), the virtual environment, makefile, requirements, and headless browser are all working correctly!
