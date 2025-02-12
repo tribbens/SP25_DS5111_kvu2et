@@ -25,6 +25,22 @@ Type the following code to run the script to install Chrome headless browser:
 ```
 bash scripts/install_chrome_headless.sh
 ```
-# Installing Requirements
-
-# Setting up Headless Browser
+# Further Setup of Virtual Environment
+* Type this code to activate env
+```
+make env
+```
+* The requirements.txt file includes any packages that we want to have installed. Type this code to install all packages included in the requirements file:
+```
+make update
+```
+* Let's test the headless browser by typing the following code:
+```
+make ygainers.csv
+```
+# Confirming Structure
+After running this code:
+```
+tree SP25_DS5111_kvu2et -I env
+```
+you should have an output similar to mine shown here:
