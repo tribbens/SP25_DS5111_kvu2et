@@ -20,8 +20,11 @@ Navigate into the folder for the repository you just cloned. Then type the follo
 ```
 bash init.sh
 ```
-# VM Setup
-
+# Install Chrome Headless Browser
+Type the following code to run the script to install Chrome headless browser:
+```
+bash scripts/install_chrome_headless.sh
+```
 # Installing Requirements
 
 # Setting up Headless Browser
