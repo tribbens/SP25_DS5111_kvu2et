@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Headless browser
+google-chrome-stable_current_amd64.deb
+
 # C extensions
 *.so
 
