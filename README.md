@@ -43,6 +43,10 @@ make update
 ```
 make ygainers.csv
 ```
+* Move the new file to "sample_data" by typing:
+```
+mv ygainers.csv sample_data/
+```
 # Confirming Structure
 Let's check the structure to confirm everything worked. Type this code, replacing the bracketed part with the full path to your project repository:
 ```
@@ -56,9 +60,10 @@ You should have an output similar to mine shown here:
 ├── init.sh
 ├── makefile
 ├── requirements.txt
+├── sample_data
+│   └── ygainers.csv
 ├── scripts
 │   └── install_chrome_headless.sh
-├── ygainers.csv
 └── ygainers.html
 ```
 
