@@ -26,7 +26,7 @@ Type the following code to run the script to install Chrome headless browser:
 bash scripts/install_chrome_headless.sh
 ```
 # Further Setup of Virtual Environment
-* Type this code to activate env
+* Type this code to setup the env
 ```
 make env
 ```
