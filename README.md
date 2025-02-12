@@ -35,7 +35,7 @@ make env
 make update
 ```
 # Activating and Testing
-* Activitate the env with this code:
+* Activate the env with this code:
 ```
 . env/bin/activate
 ```
