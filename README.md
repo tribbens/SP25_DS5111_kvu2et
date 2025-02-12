@@ -1,4 +1,7 @@
-# Initial Setup
+# Initial Setup of VM
+```
+bash
+```
 
 # GitHub Credentials
 
