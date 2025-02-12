@@ -44,7 +44,7 @@ make update
 make ygainers.csv
 ```
 # Confirming Structure
-Let's check the structure to confirm everything worked. Type this code, replacing the bracked part with the full path to your project repository:
+Let's check the structure to confirm everything worked. Type this code, replacing the bracketed part with the full path to your project repository:
 ```
 tree <your project-repo> -I env
 ```
@@ -61,4 +61,5 @@ You should have an output similar to mine shown here:
 ├── ygainers.csv
 └── ygainers.html
 ```
-## If your output looks similar to mine (paying special attention to "ygainers.csv" showing up), the virtual environment, makefile, requirements, and headless browser are all working correctly!
+
+### If your output looks similar to mine (paying special attention to "ygainers.csv" showing up), everything is setup properly!
