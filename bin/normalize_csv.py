@@ -23,7 +23,7 @@ def normalize_csv(raw_csv_path):
         norm_df['symbol'] = norm_df['symbol'].str.extract(r'\((.*?)\)')
         
         assert type(norm_df) == pd.DataFrame
-        return norm_df.to_csv('wsjgainers_norm.csv', index=False)
+        return norm_df.to_csv('wjsgainers_norm.csv', index=False)
     
     else:
         print('Please enter a supported file')
