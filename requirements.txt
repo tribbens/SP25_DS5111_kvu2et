@@ -3,3 +3,5 @@ lxml
 numpy
 pylint
 pytest
+html5lib
+bs4
