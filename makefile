@@ -19,3 +19,8 @@ wjsgainers.html:
 wjsgainers.csv: wjsgainers.html
 	python3 -c "import pandas as pd; raw = pd.read_html('wjsgainers.html'); raw[0].to_csv('wjsgainers.csv')"
 
+lint:
+	pylint bin/normalize_csv.py
+
+test: lint
+	pytest -vv tests
