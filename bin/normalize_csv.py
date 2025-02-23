@@ -1,8 +1,5 @@
 import sys
 import pandas as pd
-assert len(sys.argv)==2, "too many inputs, expects 2"
-print(f'variables passed: {sys.argv}')
-raw_csv_file = sys.argv[1].strip()
 
 def normalize_csv(raw_csv_path):
     if 'ygainers' in raw_csv_path:
@@ -10,7 +7,7 @@ def normalize_csv(raw_csv_path):
         print('ygainers loaded')
         norm_df = raw_df[['Symbol', 'Price', 'Change', 'Change %']]
         norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
- 
+
         assert type(norm_df) == pd.DataFrame
         return norm_df.to_csv('ygainers_norm.csv', index=False)
 
@@ -28,4 +25,9 @@ def normalize_csv(raw_csv_path):
     else:
         print('Please enter a supported file')
 
-normalize_csv(raw_csv_file)
+# this ensures it doesn't run when imported
+if __name__ == '__main__':
+    assert len(sys.argv) == 2, "too many inputs, expects 2"
+    raw_csv_file = sys.argv[1].strip()
+
+    normalize_csv(raw_csv_file)
