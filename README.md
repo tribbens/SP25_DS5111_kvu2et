@@ -1,3 +1,6 @@
+### Workflow Badge
+[![Feature Validation](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml/badge.svg)](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml)
+
 # Setup GitHub Credentials
 Enter the following code to create new SSH credentials but substitute with the email associated with your GitHub account.
 ```
@@ -68,6 +71,3 @@ You should have an output similar to mine shown here:
 ```
 
 ### If your output looks similar to mine (paying special attention to "ygainers.csv" showing up), everything is setup properly!
-
-### Workflow Badge
-[![Feature Validation](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml/badge.svg)](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml)
