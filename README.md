@@ -1,4 +1,3 @@
-### Workflow Badge
 [![Feature Validation](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml/badge.svg)](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml)
 
 # Setup GitHub Credentials
