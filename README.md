@@ -1,3 +1,5 @@
+[![Feature Validation](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml/badge.svg)](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml)
+
 # Setup GitHub Credentials
 Enter the following code to create new SSH credentials but substitute with the email associated with your GitHub account.
 ```
