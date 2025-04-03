@@ -3,6 +3,8 @@ This module provides functions to normalize csv files into a standard format wit
 It supports files that contain 'ygainers' or 'wsjgainers' in the filename.
 '''
 
+# was looking for the OOP and design phase that follows.  Let me know if I'm looking in the wrong branch, but I"m pretty sure I branched of the oop one...
+
 import sys
 import pandas as pd
 
