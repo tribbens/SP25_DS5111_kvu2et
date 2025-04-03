@@ -4,6 +4,10 @@ sys.path.append('.')
 import bin.normalize_csv
 
 def test_normalize_ygainers():
+    # this is great! Having some test data is great for testing and for reference.
+    # one thing to change though, is moving the test data inside the tests/ directory
+    # so the tests are self contained.  So you would probably go further, say to have a tests/data/ directory
+    # See if you can move the test files there and if you get stuck let me know, there may be some finnaggling with paths needed
     ygain_df = pd.read_csv('ygainers_norm.csv')
 
     # check column names
