@@ -18,6 +18,3 @@ class GainerProcessYahoo(GainerProcess):
 
     def save_with_timestamp(self):
         print("Saving Yahoo gainers")
-
-test = GainerDownloadYahoo()
-test.download()

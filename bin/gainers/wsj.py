@@ -1,5 +1,5 @@
-from factory.py import GainerDownload
-from factory.py import GainerProcess
+from factory import GainerDownload
+from factory import GainerProcess
 
 class GainerDownloadWSJ(GainerDownload):
     def __init__(self):

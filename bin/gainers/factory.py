@@ -1,3 +1,8 @@
+from yahoo import GainerDownloadYahoo
+from wsj import GainerDownloadWSJ
+from process_template GainerProcessYahoo
+from process_template GainerProcessWSJ
+
 # FACTORY
 class GainerFactory:
     def __init__(self, choice):
