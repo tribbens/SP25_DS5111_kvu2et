@@ -1,5 +1,5 @@
-from factory.py import GainerDownload
-from factory.py import GainerProcess
+from base import GainerDownload
+from base import GainerProcess
 
 class GainerDownloadYahoo(GainerDownload):
     def __init__(self):
@@ -8,7 +8,6 @@ class GainerDownloadYahoo(GainerDownload):
     def download(self):
         super().download()
         print("Downloading yahoo gainers from:", self.url)
-
 
 class GainerProcessYahoo(GainerProcess):
     def __init__(self):
