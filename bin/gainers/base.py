@@ -16,12 +16,13 @@ class GainerDownload(ABC):
 
 # PROCESSORS
 class GainerProcess(ABC):
-    def __init__(self, df, source):
-        self.raw_df = df
+    def __init__(self, fname, source):
+        self.fname = fname
 	self.source = source
 
     @abstractmethod
     def normalize(self):
+	raw_df = pd.read_csv(file_name)
         if self.source == 'yahoo':
 		norm_df = raw_df[['Symbol', 'Price', 'Change', 'Change %']]
 		norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']

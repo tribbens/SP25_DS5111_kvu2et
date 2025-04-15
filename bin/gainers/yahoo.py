@@ -3,10 +3,11 @@ from factory.py import GainerProcess
 
 class GainerDownloadYahoo(GainerDownload):
     def __init__(self):
-        pass
-        
+        super().__init__('https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200')
+
     def download(self):
-        print("Downloading yahoo gainers")
+        super().download()
+        print("Downloading yahoo gainers from:", self.url)
 
 
 class GainerProcessYahoo(GainerProcess):
@@ -14,13 +15,10 @@ class GainerProcessYahoo(GainerProcess):
         pass
 
     def normalize(self):
-        print("Normalizing yahoo gainers")
-	raw_df = pd.read_csv(raw_csv_path)
-        norm_df = raw_df[['Symbol', 'Price', 'Change', 'Change %']]
-        norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
-
-        assert isinstance(norm_df, pd.DataFrame)
-        return norm_df.to_csv('ygainers_norm.csv', index=False)
+        pass
 
     def save_with_timestamp(self):
         print("Saving Yahoo gainers")
+
+test = GainerDownloadYahoo()
+test.download()
