@@ -13,7 +13,6 @@ class GainerDownload(ABC):
         subprocess.run(command, shell=True)
         raw = pd.read_html('raw_data.html')
         raw[0].to_csv('raw_data.csv')
-        pass
 
 
 # PROCESSORS
