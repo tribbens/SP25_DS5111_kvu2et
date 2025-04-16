@@ -13,7 +13,7 @@ class GainerDownloadWSJ(GainerDownload):
 
 class GainerProcessWSJ(GainerProcess):
     def __init__(self, datetime_now):
-        super().__init__('raw_data.html', 'wsj', datetime_now)
+        super().__init__('raw_data.csv', 'wsj', datetime_now)
 
     def normalize(self):
         super().normalize()

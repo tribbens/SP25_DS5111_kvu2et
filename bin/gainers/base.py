@@ -30,6 +30,9 @@ class GainerDownload(ABC):
         with open("raw_data.html", "w") as f:
             f.write(html)
 
+        # create raw csv file
+        raw = pd.read_html("raw_data.html")
+        raw[0].to_csv("raw_data.csv")
 
 # PROCESSORS
 class GainerProcess(ABC):
@@ -40,9 +43,7 @@ class GainerProcess(ABC):
 
     @abstractmethod
     def normalize(self):
-        raw = pd.read_html(self.fname)
-        raw[0].to_csv('raw_data.csv')
-        raw_df = pd.read_csv('raw_data.csv')
+        raw_df = pd.read_csv(self.fname)
         if self.source == 'yahoo':
             norm_df = raw_df[['Symbol', 'Price', 'Change', 'Change %']]
             norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']

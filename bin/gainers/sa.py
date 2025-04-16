@@ -13,7 +13,7 @@ class GainerDownloadSA(GainerDownload):
 
 class GainerProcessSA(GainerProcess):
     def __init__(self, datetime_now):
-        super().__init__('raw_data.html', 'sa', datetime_now)
+        super().__init__('raw_data.csv', 'sa', datetime_now)
 
     def normalize(self):
         super().normalize()

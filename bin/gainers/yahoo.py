@@ -13,7 +13,7 @@ class GainerDownloadYahoo(GainerDownload):
 
 class GainerProcessYahoo(GainerProcess):
     def __init__(self, datetime_now):
-        super().__init__('raw_data.html', 'yahoo', datetime_now)
+        super().__init__('raw_data.csv', 'yahoo', datetime_now)
 
     def normalize(self):
         super().normalize()
