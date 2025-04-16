@@ -23,17 +23,20 @@ class GainerDownload(ABC):
         ]
         result = subprocess.run(command, capture_output=True, text=True,
             check=True, env=env)
+        # capture time and date when data was downloaded
+        self.datetime_now = datetime.now(ZoneInfo("America/New_York"))
+        
         html = result.stdout
-
         with open("raw_data.html", "w") as f:
             f.write(html)
 
 
 # PROCESSORS
 class GainerProcess(ABC):
-    def __init__(self, fname, source):
+    def __init__(self, fname, source, current_datetime):
         self.fname = fname
         self.source = source
+        self.now = current_datetime
 
     @abstractmethod
     def normalize(self):
@@ -47,4 +50,10 @@ class GainerProcess(ABC):
 
     @abstractmethod
     def save_with_timestamp(self):
-        pass
+        now = self.now
+        self.current_date = str(now.date())
+        self.current_time = str(now.time()).replace(':', '-')[:-10]
+        
+        file_name = 'ygainers_' + date + '_at_' + time + '.csv'
+        self.norm_df.to_csv(file_name)
+    
