@@ -101,13 +101,13 @@ class GainerProcess(ABC):
         time = str(now.time()).replace(':', '-')[:-10]
         if self.source == 'yahoo':
             file_name = 'ygainers_' + date + '_at_' + time + '.csv'
-            self.norm_df.to_csv(file_name)
+            self.norm_df.to_csv(file_name, index=False)
         elif self.source == 'wsj':
             file_name = 'wsjgainers_' + date + '_at_' + time + '.csv'
-            self.norm_df.to_csv(file_name)
+            self.norm_df.to_csv(file_name, index=False)
         elif self.source == 'sa':
             file_name = 'sagainers_' + date + '_at_' + time + '.csv'
-            self.norm_df.to_csv(file_name)
+            self.norm_df.to_csv(file_name, index=False)
         else:
             print("Unable to save, make sure argument is one of [yahoo, wsj, sa]")
 
