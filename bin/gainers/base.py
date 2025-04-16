@@ -7,8 +7,9 @@ from zoneinfo import ZoneInfo
 
 # DOWNLOADER
 class GainerDownload(ABC):
-    def __init__(self, url):
+    def __init__(self, url, datetime):
         self.url = url
+        self.datetime_now = datetime
 
     @abstractmethod
     def download(self):
@@ -25,9 +26,7 @@ class GainerDownload(ABC):
         ]
         result = subprocess.run(command, capture_output=True, text=True,
             check=True, env=env)
-        # capture time and date when data was downloaded
-        self.datetime_now = datetime.now(ZoneInfo("America/New_York"))
-        
+
         html = result.stdout
         with open("raw_data.html", "w") as f:
             f.write(html)
@@ -42,7 +41,9 @@ class GainerProcess(ABC):
 
     @abstractmethod
     def normalize(self):
-        raw_df = pd.read_csv(self.fname)
+        raw = pd.read_html(self.fname)
+        raw[0].to_csv('raw_data.csv')
+        raw_df = pd.read_csv('raw_data.csv')
         if self.source == 'yahoo':
             norm_df = raw_df[['Symbol', 'Price', 'Change', 'Change %']]
             norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
@@ -53,9 +54,12 @@ class GainerProcess(ABC):
     @abstractmethod
     def save_with_timestamp(self):
         now = self.now
-        self.current_date = str(now.date())
-        self.current_time = str(now.time()).replace(':', '-')[:-10]
-        
+        date = str(now.date())
+        time = str(now.time()).replace(':', '-')[:-10]
+
         file_name = 'ygainers_' + date + '_at_' + time + '.csv'
         self.norm_df.to_csv(file_name)
-    
+
+        # file clearnup
+        os.remove('raw_data.csv')
+        os.remove('raw_data.html')

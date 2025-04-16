@@ -6,7 +6,8 @@ from zoneinfo import ZoneInfo
 
 class GainerDownloadYahoo(GainerDownload):
     def __init__(self):
-        super().__init__('https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200')
+        now = datetime.now(ZoneInfo("America/New_York"))
+        super().__init__('https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200', now)
 
     def download(self):
         super().download()
@@ -25,8 +26,8 @@ class GainerProcessYahoo(GainerProcess):
         super().save_with_timestamp()
 
 test = GainerDownloadYahoo()
-test_process = GainerProcessYahoo(test.current_datetime)
+test_process = GainerProcessYahoo(test.datetime_now)
 
-# test.download()
+test.download()
 test_process.normalize()
 test_process.save_with_timestamp()
