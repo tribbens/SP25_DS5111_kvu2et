@@ -21,8 +21,8 @@ class GainerProcessSA(GainerProcess):
     '''
     Placeholder class docstring
     '''
-    def __init__(self, datetime_now):
-        super().__init__('raw_data.csv', 'sa', datetime_now)
+    def __init__(self, fname, datetime_now):
+        super().__init__(fname, 'sa', datetime_now)
 
     def normalize(self):
         super().normalize()

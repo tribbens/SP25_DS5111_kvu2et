@@ -24,8 +24,8 @@ class GainerProcessWSJ(GainerProcess):
     and process the raw_data.csv file into a processed
     gainers csv file with the date and time.
     '''
-    def __init__(self, datetime_now):
-        super().__init__('raw_data.csv', 'wsj', datetime_now)
+    def __init__(self, fname, datetime_now):
+        super().__init__(fname, 'wsj', datetime_now)
 
     def normalize(self):
         super().normalize()

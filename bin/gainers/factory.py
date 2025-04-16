@@ -17,12 +17,13 @@ class GainerFactory:
     Outputs: appropriate classes for downloader and processor
     '''
 
-    def __init__(self, choice):
+    def __init__(self, choice, fname):
         '''
         Placeholder class docstring
         '''
         assert choice in ['yahoo', 'wsj', 'sa',  'test'], f"Unrecognized gainer type {choice}"
         self.choice = choice
+        self.fname = fname
         # define datetime_now
         self.datetime_now = datetime.now()
 
@@ -46,8 +47,8 @@ class GainerFactory:
         '''
         # trigger off url to return correct downloader
         if self.choice == 'yahoo':
-            return GainerProcessYahoo(self.datetime_now)
+            return GainerProcessYahoo(self.fname, self.datetime_now)
         if self.choice == 'wsj':
-            return GainerProcessWSJ(self.datetime_now)
+            return GainerProcessWSJ(self.fname, self.datetime_now)
         if self.choice == 'sa':
-            return GainerProcessSA(self.datetime_now)
+            return GainerProcessSA(self.fname, self.datetime_now)

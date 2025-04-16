@@ -58,7 +58,6 @@ class GainerProcess(ABC):
         self.fname = fname
         self.source = source
         self.datetime_now = datetime_now
-        self.norm_df = pd.DataFrame()
 
     @abstractmethod
     def normalize(self):
@@ -69,6 +68,8 @@ class GainerProcess(ABC):
         if self.source == 'yahoo':
             norm_df = raw_df[['Symbol', 'Price', 'Change', 'Change %']]
             norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
+            # fixing the price
+            norm_df['price'] = norm_df['price'].str.extract(r'^([\d.]+)\s+\+')
         elif self.source == 'wsj':
             norm_df = raw_df[['Unnamed: 0', 'Last', 'Chg', '% Chg']]
             norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
@@ -112,5 +113,5 @@ class GainerProcess(ABC):
             print("Unable to save, make sure argument is one of [yahoo, wsj, sa]")
 
         # file clearnup
-#        os.remove('raw_data.csv')
-#        os.remove('raw_data.html')
+        os.remove('raw_data.csv')
+        os.remove('raw_data.html')
