@@ -7,9 +7,8 @@ from zoneinfo import ZoneInfo
 
 # DOWNLOADER
 class GainerDownload(ABC):
-    def __init__(self, url, datetime):
+    def __init__(self, url):
         self.url = url
-        self.datetime_now = datetime
 
     @abstractmethod
     def download(self):
@@ -34,10 +33,10 @@ class GainerDownload(ABC):
 
 # PROCESSORS
 class GainerProcess(ABC):
-    def __init__(self, fname, source, current_datetime):
+    def __init__(self, fname, source, datetime_now):
         self.fname = fname
         self.source = source
-        self.now = current_datetime
+        self.datetime_now = datetime_now
 
     @abstractmethod
     def normalize(self):
@@ -58,7 +57,7 @@ class GainerProcess(ABC):
 
     @abstractmethod
     def save_with_timestamp(self):
-        now = self.now
+        now = self.datetime_now
         date = str(now.date())
         time = str(now.time()).replace(':', '-')[:-10]
         if self.source == 'wsj':
