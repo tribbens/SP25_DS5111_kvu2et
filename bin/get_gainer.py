@@ -7,7 +7,7 @@ if __name__=="__main__":
     import sys
 
     # Make our selection, 'one' choice
-    choice = sys.argv[1]
+    choice = str(sys.argv[1])
 
     # let our factory get select the family of objects for processing
     factory = GainerFactory(choice)

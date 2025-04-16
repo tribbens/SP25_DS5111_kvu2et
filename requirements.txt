@@ -5,3 +5,7 @@ pylint==3.3.4
 pytest==8.3.4
 html5lib==1.1
 bs4==0.0.2
+datetime
+ZoneInfo
+os
+sys
