@@ -112,5 +112,5 @@ class GainerProcess(ABC):
             print("Unable to save, make sure argument is one of [yahoo, wsj, sa]")
 
         # file clearnup
-        os.remove('raw_data.csv')
-        os.remove('raw_data.html')
+#        os.remove('raw_data.csv')
+#        os.remove('raw_data.html')

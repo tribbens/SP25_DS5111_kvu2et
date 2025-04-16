@@ -1,6 +1,5 @@
-import sys
 import pandas as pd
-import bin.get_gainer
+from bin import gainers
 
 def test_output_ygainers():
     ygain_df = pd.read_csv('data/ygainers_test_clean.csv')
