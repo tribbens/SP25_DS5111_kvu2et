@@ -36,18 +36,34 @@ make env
 ```
 make update
 ```
-# Activating and Testing
+# Activating, Linting, & Testing Code
 * Activate the env with this code:
 ```
-. env/bin/activate
+source env/bin/activate
 ```
-* Let's test the headless browser by typing the following code:
+* Lint the gainers module with pylint:
 ```
-make ygainers.csv
+make lint
 ```
-* Move the file "ygainers.csv" to "sample_data" by typing:
+You should get a score above 9.0 but likely not 10.0
+* Test the gainers module with pytest:
 ```
-mv ygainers.csv sample_data/
+make test
+```
+# Running the Gainers Module to Test It
+* Let's try to download some data from Yahoo Finance:
+```
+make gainers SRC=yahoo
+```
+* It should show up in your directory with the current date with this command:
+```
+ls
+```
+The format of the file should be: ygainers_yyyy-mm-dd_at_hh-mm.csv
+If a file shows up with a date and time close to when you typed the command, it should have worked!
+* Just to confirm, type the following command where file_name is the file that just showed up:
+```
+cat <file_name>
 ```
 # Confirming Structure
 Let's check the structure to confirm everything worked. Type this code, replacing the bracketed part with the full path to your project repository:
