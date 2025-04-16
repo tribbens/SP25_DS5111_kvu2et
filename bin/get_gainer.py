@@ -1,4 +1,5 @@
 from gainers.factory import GainerFactory
+from gainers.process_template import ProcessGainer
 import sys
 
 if __name__=="__main__":

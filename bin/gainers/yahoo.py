@@ -1,5 +1,5 @@
-from base import GainerDownload
-from base import GainerProcess
+from .base import GainerDownload
+from .base import GainerProcess
 
 class GainerDownloadYahoo(GainerDownload):
     def __init__(self):
@@ -11,10 +11,10 @@ class GainerDownloadYahoo(GainerDownload):
 
 class GainerProcessYahoo(GainerProcess):
     def __init__(self):
-        pass
+        super().__init__('raw_data.html', 'yahoo')
 
     def normalize(self):
-        pass
+        super().normalize
 
     def save_with_timestamp(self):
         print("Saving Yahoo gainers")

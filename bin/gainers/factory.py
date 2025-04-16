@@ -1,7 +1,5 @@
-from yahoo import GainerDownloadYahoo
-from wsj import GainerDownloadWSJ
-from process_template GainerProcessYahoo
-from process_template GainerProcessWSJ
+from .yahoo import GainerDownloadYahoo, GainerProcessYahoo
+from .wsj import GainerDownloadWSJ, GainerProcessWSJ
 
 # FACTORY
 class GainerFactory:

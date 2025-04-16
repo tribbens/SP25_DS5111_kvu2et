@@ -1,5 +1,4 @@
-from factory import GainerDownload
-from factory import GainerProcess
+from .base import GainerDownload, GainerProcess
 
 class GainerDownloadWSJ(GainerDownload):
     def __init__(self):
@@ -15,7 +14,7 @@ class GainerProcessWSJ(GainerProcess):
 
     def normalize(self):
         print("Normalizing WSJ gainers")
-	raw_df = pd.read_csv(raw_csv_path)
+        raw_df = pd.read_csv(raw_csv_path)
         norm_df = raw_df[['Unnamed: 0', 'Last', 'Chg', '% Chg']]
         norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
         # extract only the symbol
