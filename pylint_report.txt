@@ -1,0 +1,67 @@
+pylint bin/get_gainer.py gainers/
+************* Module get_gainer
+bin/get_gainer.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module gainers/
+bin/gainers/__init__.py:1:0: C0305: Trailing newlines (trailing-newlines)
+bin/gainers/__init__.py:1:0: C0103: Module name "gainers/" doesn't conform to snake_case naming style (invalid-name)
+************* Module gainers.process_template
+bin/gainers/process_template.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+bin/gainers/process_template.py:20:4: C0116: Missing function or method docstring (missing-function-docstring)
+bin/gainers/process_template.py:2:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+************* Module gainers.wsj
+bin/gainers/wsj.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+bin/gainers/wsj.py:5:0: C0115: Missing class docstring (missing-class-docstring)
+bin/gainers/wsj.py:5:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+bin/gainers/wsj.py:14:0: C0115: Missing class docstring (missing-class-docstring)
+bin/gainers/wsj.py:18:4: W0246: Useless parent or super() delegation in method 'normalize' (useless-parent-delegation)
+bin/gainers/wsj.py:3:0: C0411: standard import "os" should be placed before local imports "base.GainerDownload", "base.GainerProcess" (wrong-import-order)
+bin/gainers/wsj.py:3:0: W0611: Unused import os (unused-import)
+************* Module gainers.factory
+bin/gainers/factory.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+bin/gainers/factory.py:20:4: C0116: Missing function or method docstring (missing-function-docstring)
+bin/gainers/factory.py:24:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+bin/gainers/factory.py:20:4: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+bin/gainers/factory.py:31:4: C0116: Missing function or method docstring (missing-function-docstring)
+bin/gainers/factory.py:33:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+bin/gainers/factory.py:31:4: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+bin/gainers/factory.py:22:8: W0201: Attribute 'datetime_now' defined outside __init__ (attribute-defined-outside-init)
+bin/gainers/factory.py:4:0: C0411: standard import "datetime.datetime" should be placed before local imports "yahoo.GainerDownloadYahoo", "wsj.GainerDownloadWSJ", "sa.GainerDownloadSA" (wrong-import-order)
+bin/gainers/factory.py:5:0: C0411: standard import "zoneinfo.ZoneInfo" should be placed before local imports "yahoo.GainerDownloadYahoo", "wsj.GainerDownloadWSJ", "sa.GainerDownloadSA" (wrong-import-order)
+************* Module gainers.sa
+bin/gainers/sa.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+bin/gainers/sa.py:5:0: C0115: Missing class docstring (missing-class-docstring)
+bin/gainers/sa.py:5:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+bin/gainers/sa.py:14:0: C0115: Missing class docstring (missing-class-docstring)
+bin/gainers/sa.py:18:4: W0246: Useless parent or super() delegation in method 'normalize' (useless-parent-delegation)
+bin/gainers/sa.py:3:0: C0411: standard import "os" should be placed before local imports "base.GainerDownload", "base.GainerProcess" (wrong-import-order)
+bin/gainers/sa.py:3:0: W0611: Unused import os (unused-import)
+************* Module gainers.base
+bin/gainers/base.py:59:0: C0301: Line too long (114/100) (line-too-long)
+bin/gainers/base.py:61:0: C0301: Line too long (111/100) (line-too-long)
+bin/gainers/base.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+bin/gainers/base.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+bin/gainers/base.py:14:4: C0116: Missing function or method docstring (missing-function-docstring)
+bin/gainers/base.py:30:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+bin/gainers/base.py:9:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+bin/gainers/base.py:38:0: C0115: Missing class docstring (missing-class-docstring)
+bin/gainers/base.py:45:4: C0116: Missing function or method docstring (missing-function-docstring)
+bin/gainers/base.py:71:4: C0116: Missing function or method docstring (missing-function-docstring)
+bin/gainers/base.py:68:8: W0201: Attribute 'norm_df' defined outside __init__ (attribute-defined-outside-init)
+bin/gainers/base.py:3:0: C0411: standard import "subprocess" should be placed before third party import "pandas" (wrong-import-order)
+bin/gainers/base.py:4:0: C0411: standard import "os" should be placed before third party import "pandas" (wrong-import-order)
+bin/gainers/base.py:5:0: C0411: standard import "datetime.datetime" should be placed before third party import "pandas" (wrong-import-order)
+bin/gainers/base.py:6:0: C0411: standard import "zoneinfo.ZoneInfo" should be placed before third party import "pandas" (wrong-import-order)
+bin/gainers/base.py:5:0: W0611: Unused datetime imported from datetime (unused-import)
+bin/gainers/base.py:6:0: W0611: Unused ZoneInfo imported from zoneinfo (unused-import)
+************* Module gainers.yahoo
+bin/gainers/yahoo.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+bin/gainers/yahoo.py:5:0: C0115: Missing class docstring (missing-class-docstring)
+bin/gainers/yahoo.py:5:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+bin/gainers/yahoo.py:14:0: C0115: Missing class docstring (missing-class-docstring)
+bin/gainers/yahoo.py:18:4: W0246: Useless parent or super() delegation in method 'normalize' (useless-parent-delegation)
+bin/gainers/yahoo.py:3:0: C0411: standard import "os" should be placed before local imports "base.GainerDownload", "base.GainerProcess" (wrong-import-order)
+bin/gainers/yahoo.py:3:0: W0611: Unused import os (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 6.58/10 (previous run: 6.58/10, +0.00)
+

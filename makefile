@@ -11,13 +11,7 @@ gainers:
 	python3 bin/get_gainer.py $(SRC)
 
 lint:
-	pylint bin/get_gainer.py
-	import sys; pylint bin/gainers.base.py
-	pylint bin/gainers/template_process.py
-	pylint bin/gainers/factory.py
-	pylint bin/gainers/yahoo.py
-	pylint bin/gainers/wsj.py
-	pylint bin/gainers/sa.py
+	pylint bin/get_gainer.py gainers/
 
 test: lint
 	pytest -vv tests

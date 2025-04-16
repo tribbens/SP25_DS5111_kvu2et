@@ -1,5 +1,9 @@
 # TEMPLATE
 class ProcessGainer:
+    '''
+    This class is a simple way to pull the disparate classes together
+    to make them run more easily in the main file.
+    '''
     def __init__(self, gainer_downloader, gainer_normalizer):
         self.downloader = gainer_downloader
         self.normalizer = gainer_normalizer

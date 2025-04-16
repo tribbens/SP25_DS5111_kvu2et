@@ -6,6 +6,13 @@ from zoneinfo import ZoneInfo
 
 # FACTORY
 class GainerFactory:
+    '''
+    This class takes a user input and determines which classes to use based on that input
+
+    Inputs: SRC = yahoo, wsj, or sa
+    Outputs: appropriate classes for downloader and processor
+    '''
+
     def __init__(self, choice):
         assert choice in ['yahoo', 'wsj', 'sa',  'test'], f"Unrecognized gainer type {choice}"
         self.choice = choice

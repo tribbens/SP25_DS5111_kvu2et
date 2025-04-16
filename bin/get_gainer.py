@@ -2,17 +2,8 @@ import sys
 from gainers.factory import GainerFactory
 from gainers.process_template import ProcessGainer
 
+# this file brings everything together
 if __name__=="__main__":
-    '''
-    Input: SRC = yahoo, wsj, or sa
-    Output: normalized csv file with the date
-
-    This function pulls everything from the gainers package together
-    It takes the user input for the variable SRC and runs the appropriate classes.
-    '''
-    # Our sample main file would look like this
-    import sys
-
     # Make our selection, 'one' choice
     CHOICE = str(sys.argv[1])
 
