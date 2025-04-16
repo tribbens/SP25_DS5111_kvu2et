@@ -2,11 +2,11 @@
 Placeholder module docstring
 '''
 
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from .yahoo import GainerDownloadYahoo, GainerProcessYahoo
 from .wsj import GainerDownloadWSJ, GainerProcessWSJ
 from .sa import GainerDownloadSA, GainerProcessSA
-from datetime import datetime
-from zoneinfo import ZoneInfo
 
 # FACTORY
 class GainerFactory:

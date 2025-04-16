@@ -7,7 +7,6 @@ import subprocess
 import pandas as pd
 from abc import ABC, abstractmethod
 from datetime import datetime
-from zoneinfo import ZoneInfo
 
 # DOWNLOADER
 class GainerDownload(ABC):
