@@ -20,6 +20,8 @@ class GainerFactory:
     def __init__(self, choice):
         assert choice in ['yahoo', 'wsj', 'sa',  'test'], f"Unrecognized gainer type {choice}"
         self.choice = choice
+        # define datetime_now
+        self.datetime_now = datetime.now()
 
     def get_downloader(self):
         # capture current date and time

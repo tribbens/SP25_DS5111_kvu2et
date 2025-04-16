@@ -2,11 +2,10 @@
 Placeholder module docstring
 '''
 
+from abc import ABC, abstractmethod
 import os
 import subprocess
 import pandas as pd
-from abc import ABC, abstractmethod
-from datetime import datetime
 
 # DOWNLOADER
 class GainerDownload(ABC):
@@ -14,6 +13,9 @@ class GainerDownload(ABC):
     Placeholder class docstring
     '''
     def __init__(self, url):
+        '''
+        Placeholder method docstring
+        '''
         self.url = url
 
     @abstractmethod
@@ -33,7 +35,7 @@ class GainerDownload(ABC):
             check=True, env=env)
 
         html = result.stdout
-        with open("raw_data.html", "w") as f:
+        with open("raw_data.html", "w", encoding="utf-8") as f:
             f.write(html)
 
         # create raw csv file
@@ -50,6 +52,7 @@ class GainerProcess(ABC):
         self.fname = fname
         self.source = source
         self.datetime_now = datetime_now
+        self.norm_df = pd.DataFrame()
 
     @abstractmethod
     def normalize(self):
@@ -66,9 +69,11 @@ class GainerProcess(ABC):
             norm_df = raw_df[['Symbol', 'Stock Price', '% Change']]
             norm_df.columns = ['symbol', 'price',  'price_percent_change']
             # remove special characters
-            norm_df['price_percent_change'] = norm_df['price_percent_change'].str.replace(r'[,%]', '', regex=True)
+            norm_df['price_percent_change'] = norm_df['price_percent_change'].str.replace(
+                r'[,%]', '', regex=True)
             # price change does not exist, going to calculate as an estimate
-            norm_df['price_change'] = norm_df['price'] * (norm_df['price_percent_change'].astype(float)  / 100)
+            norm_df['price_change'] = norm_df['price'] * (norm_df['price_percent_change'].astype(
+                float)  / 100)
             norm_df = norm_df[['symbol', 'price', 'price_change', 'price_percent_change']]
             norm_df['price_change'] = norm_df['price_change'].round(2)
         else:
