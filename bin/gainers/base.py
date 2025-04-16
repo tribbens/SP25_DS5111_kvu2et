@@ -111,7 +111,3 @@ class GainerProcess(ABC):
             self.norm_df.to_csv(file_name, index=False)
         else:
             print("Unable to save, make sure argument is one of [yahoo, wsj, sa]")
-
-        # file clearnup
-        os.remove('raw_data.csv')
-        os.remove('raw_data.html')
