@@ -13,5 +13,5 @@ gainers:
 lint:
 	pylint bin/get_gainer.py gainers/
 
-test: lint
+test:
 	pytest -vv tests

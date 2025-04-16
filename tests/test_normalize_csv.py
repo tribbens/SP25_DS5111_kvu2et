@@ -1,10 +1,9 @@
 import sys
 import pandas as pd
-sys.path.append('.')
-import bin.normalize_csv
+import bin.get_gainer
 
-def test_normalize_ygainers():
-    ygain_df = pd.read_csv('data/ygainers_test.csv')
+def test_output_ygainers():
+    ygain_df = pd.read_csv('data/ygainers_test_clean.csv')
 
     # check column names
     correct_cols = ['symbol', 'price', 'price_change', 'price_percent_change']
@@ -14,8 +13,8 @@ def test_normalize_ygainers():
     # check number of columns
     assert len(ygain_df.columns) == 4, 'too many columns, expects 4'
 
-def test_normalize_wjsgainers():
-    wsj_df = pd.read_csv('data/wsjgainers_test.csv')
+def test_output_wsjgainers():
+    wsj_df = pd.read_csv('data/wsjgainers_test_clean.csv')
 
     # check column names
     correct_cols = ['symbol', 'price', 'price_change', 'price_percent_change']
