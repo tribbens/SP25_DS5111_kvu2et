@@ -31,5 +31,7 @@ def test_output_wsjgainers():
     assert len(wsj_df.columns) == 4, 'too many columns, expects 4'
 
 def test_general_yahoo():
-    factory = GainerFactor('yahoo')
-    normalizer = facto
+    factory = GainerFactor('yahoo', 'tests/data/yahoo_test_clean.csv')
+    normalizer = factory.get_processor()
+    normalizer.normalize()
+    normalizer.save_with_timestamp()
