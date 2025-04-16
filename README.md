@@ -50,6 +50,7 @@ You should get a score above 9.0 but likely not 10.0
 ```
 make test
 ```
+All tests should pass but there may be a few warnings, which is okay.
 # Running the Gainers Module to Test It
 * Let's try to download some data from Yahoo Finance:
 ```
@@ -59,12 +60,14 @@ make gainers SRC=yahoo
 ```
 ls
 ```
-The format of the file should be: ygainers_yyyy-mm-dd_at_hh-mm.csv
-If a file shows up with a date and time close to when you typed the command, it should have worked!
+* The format of the file should be: ygainers_yyyy-mm-dd_at_hh-mm.csv
+* If a file shows up with a date and time close to when you typed the command, it should have worked!
 * Just to confirm, type the following command where file_name is the file that just showed up:
 ```
 cat <file_name>
 ```
+* You should now see rows of comma-separated values. If it does, it worked properly!
+* Repeat with the other two options. Replace 'yahoo' with 'wsj' or 'sa'. The resulting files will have the same format but "wsjgainers_..." and 'sagainers_..." instead of "ygainers_..."
 # Confirming Structure
 Let's check the structure to confirm everything worked. Type this code, replacing the bracketed part with the full path to your project repository:
 ```
