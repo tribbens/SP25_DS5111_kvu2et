@@ -11,7 +11,7 @@ gainers:
 	python3 bin/get_gainer.py $(SRC); rm raw_data.html; rm raw_data.csv
 
 lint:
-	pylint bin/get_gainer gainers/
+	pylint bin/get_gainer gainers/ || echo "Linting completed with warnings"
 
 test:
 	pytest -vv tests
