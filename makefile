@@ -8,10 +8,10 @@ update: env
 	. env/bin/activate; pip install -r requirements.txt
 
 gainers:
-	python3 bin/get_gainer.py $(SRC); rm raw_data.html; rm raw_data.csv
+	python3 get_gainer.py $(SRC); rm raw_data.html; rm raw_data.csv
 
 lint:
-	pylint bin/get_gainer gainers/ || echo "Linting completed with warnings"
+	pylint get_gainer.py bin/gainers/ || echo "Linting completed with warnings"
 
 test:
 	pytest -vv tests

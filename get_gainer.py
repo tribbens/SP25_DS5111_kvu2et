@@ -2,10 +2,14 @@
 This class allows us to make our selection and run everything
 based on the user input for the variable SRC.
 '''
-
 import sys
-from gainers.factory import GainerFactory
-from gainers.process_template import ProcessGainer
+import os
+
+# Make 'bin' importable
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from bin.gainers.factory import GainerFactory
+from bin.gainers.process_template import ProcessGainer
 
 # this file brings everything together
 if __name__=="__main__":
