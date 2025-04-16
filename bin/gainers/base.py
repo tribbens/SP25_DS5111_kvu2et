@@ -47,6 +47,11 @@ class GainerProcess(ABC):
         if self.source == 'yahoo':
             norm_df = raw_df[['Symbol', 'Price', 'Change', 'Change %']]
             norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
+        if self.source == 'wsj':
+            norm_df = raw_df[['Unnamed: 0', 'Last', 'Chg', '% Chg']]
+            norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
+            # extract only the symbol
+            norm_df['symbol'] = norm_df['symbol'].str.extract(r'\((.*?)\)')
 
         assert isinstance(norm_df, pd.DataFrame)
         self.norm_df = norm_df
@@ -56,9 +61,12 @@ class GainerProcess(ABC):
         now = self.now
         date = str(now.date())
         time = str(now.time()).replace(':', '-')[:-10]
-
-        file_name = 'ygainers_' + date + '_at_' + time + '.csv'
-        self.norm_df.to_csv(file_name)
+        if self.source == 'wsj':
+            file_name = 'wsjgainers_' + date + '_at_' + time + '.csv'
+            self.norm_df.to_csv(file_name)
+        else:
+            file_name = 'ygainers_' + date + '_at_' + time + '.csv'
+            self.norm_df.to_csv(file_name)
 
         # file clearnup
         os.remove('raw_data.csv')

@@ -1,27 +1,32 @@
-from .base import GainerDownload, GainerProcess
+from base import GainerDownload
+from base import GainerProcess
+import os
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 class GainerDownloadWSJ(GainerDownload):
     def __init__(self):
-        pass
+        now = datetime.now(ZoneInfo("America/New_York"))
+        super().__init__('https://www.wsj.com/market-data/stocks/us/movers', now)
 
     def download(self):
-        print("Downloading WSJ gainers")
+        super().download()
 
+        print("Downloading wsj gainers from:", self.url)
 
 class GainerProcessWSJ(GainerProcess):
-    def __init__(self):
-        pass
+    def __init__(self, datetime):
+        super().__init__('raw_data.html', 'wsj', datetime)
 
     def normalize(self):
-        print("Normalizing WSJ gainers")
-        raw_df = pd.read_csv(raw_csv_path)
-        norm_df = raw_df[['Unnamed: 0', 'Last', 'Chg', '% Chg']]
-        norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
-        # extract only the symbol
-        norm_df['symbol'] = norm_df['symbol'].str.extract(r'\((.*?)\)')
-
-        assert isinstance(norm_df, pd.DataFrame)
-        return norm_df.to_csv('wsjgainers_norm.csv', index=False)
+        super().normalize()
 
     def save_with_timestamp(self):
-        print("Saving WSJ gainers")
+        super().save_with_timestamp()
+
+test = GainerDownloadWSJ()
+test_process = GainerProcessWSJ(test.datetime_now)
+
+test.download()
+test_process.normalize()
+test_process.save_with_timestamp()
