@@ -1,3 +1,8 @@
+'''
+This class allows us to make our selection and run everything
+based on the user input for the variable SRC.
+'''
+
 import sys
 from gainers.factory import GainerFactory
 from gainers.process_template import ProcessGainer

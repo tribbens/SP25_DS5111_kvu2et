@@ -1,3 +1,7 @@
+'''
+Placeholder module docstring
+'''
+
 # TEMPLATE
 class ProcessGainer:
     '''

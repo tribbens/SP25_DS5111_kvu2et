@@ -1,12 +1,19 @@
-from abc import ABC, abstractmethod
-import pandas as pd
-import subprocess
+'''
+Placeholder module docstring
+'''
+
 import os
+import subprocess
+import pandas as pd
+from abc import ABC, abstractmethod
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
 # DOWNLOADER
 class GainerDownload(ABC):
+    '''
+    Placeholder class docstring
+    '''
     def __init__(self, url):
         self.url = url
 
@@ -34,8 +41,12 @@ class GainerDownload(ABC):
         raw = pd.read_html("raw_data.html")
         raw[0].to_csv("raw_data.csv")
 
+
 # PROCESSORS
 class GainerProcess(ABC):
+    '''
+    Placeholder class docstring
+    '''
     def __init__(self, fname, source, datetime_now):
         self.fname = fname
         self.source = source

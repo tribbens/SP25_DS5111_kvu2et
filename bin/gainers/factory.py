@@ -1,3 +1,7 @@
+'''
+Placeholder module docstring
+'''
+
 from .yahoo import GainerDownloadYahoo, GainerProcessYahoo
 from .wsj import GainerDownloadWSJ, GainerProcessWSJ
 from .sa import GainerDownloadSA, GainerProcessSA
@@ -23,16 +27,16 @@ class GainerFactory:
         # trigger off url to return correct downloader
         if self.choice == 'yahoo':
             return GainerDownloadYahoo()
-        elif self.choice == 'wsj':
+        if self.choice == 'wsj':
             return GainerDownloadWSJ()
-        elif self.choice == 'sa':
+        if self.choice == 'sa':
             return GainerDownloadSA()
 
     def get_processor(self):
         # trigger off url to return correct downloader
         if self.choice == 'yahoo':
             return GainerProcessYahoo(self.datetime_now)
-        elif self.choice == 'wsj':
+        if self.choice == 'wsj':
             return GainerProcessWSJ(self.datetime_now)
-        elif self.choice == 'sa':
+        if self.choice == 'sa':
             return GainerProcessSA(self.datetime_now)

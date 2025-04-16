@@ -1,8 +1,14 @@
+'''
+Placeholder module docstring
+'''
+
 from .base import GainerDownload
 from .base import GainerProcess
-import os
 
 class GainerDownloadSA(GainerDownload):
+    '''
+    Placeholder class docstring
+    '''
     def __init__(self):
         super().__init__('https://stockanalysis.com/markets/gainers/')
 
@@ -12,6 +18,9 @@ class GainerDownloadSA(GainerDownload):
         print("Downloading stockanalysis gainers from:", self.url)
 
 class GainerProcessSA(GainerProcess):
+    '''
+    Placeholder class docstring
+    '''
     def __init__(self, datetime_now):
         super().__init__('raw_data.csv', 'sa', datetime_now)
 
