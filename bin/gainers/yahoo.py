@@ -1,5 +1,5 @@
-from base import GainerDownload
-from base import GainerProcess
+from .base import GainerDownload
+from .base import GainerProcess
 import os
 
 class GainerDownloadYahoo(GainerDownload):
@@ -12,7 +12,7 @@ class GainerDownloadYahoo(GainerDownload):
         print("Downloading yahoo gainers from:", self.url)
 
 class GainerProcessYahoo(GainerProcess):
-    def __init__(self, datetime_now)
+    def __init__(self, datetime_now):
         super().__init__('raw_data.html', 'yahoo', datetime_now)
 
     def normalize(self):

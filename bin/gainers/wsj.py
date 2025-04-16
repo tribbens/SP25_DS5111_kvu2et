@@ -1,5 +1,5 @@
-from base import GainerDownload
-from base import GainerProcess
+from .base import GainerDownload
+from .base import GainerProcess
 import os
 
 class GainerDownloadWSJ(GainerDownload):
