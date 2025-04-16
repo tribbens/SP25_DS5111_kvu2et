@@ -46,11 +46,22 @@ class GainerProcess(ABC):
         if self.source == 'yahoo':
             norm_df = raw_df[['Symbol', 'Price', 'Change', 'Change %']]
             norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
-        if self.source == 'wsj':
+        elif self.source == 'wsj':
             norm_df = raw_df[['Unnamed: 0', 'Last', 'Chg', '% Chg']]
             norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
             # extract only the symbol
             norm_df['symbol'] = norm_df['symbol'].str.extract(r'\((.*?)\)')
+        elif self.source == 'sa':
+            norm_df = raw_df[['Symbol', 'Stock Price', '% Change']]
+            norm_df.columns = ['symbol', 'price',  'price_percent_change']
+            # remove special characters
+            norm_df['price_percent_change'] = norm_df['price_percent_change'].str.replace(r'[,%]', '', regex=True)
+            # price change does not exist, going to calculate as an estimate
+            norm_df['price_change'] = norm_df['price'] * (norm_df['price_percent_change'].astype(float)  / 100)
+            norm_df = norm_df[['symbol', 'price', 'price_change', 'price_percent_change']]
+            norm_df['price_change'] = norm_df['price_change'].round(2)
+        else:
+            print("Unable to normalize, ensure argument is one of [yahoo, wsj, sa]")
 
         assert isinstance(norm_df, pd.DataFrame)
         self.norm_df = norm_df
@@ -60,12 +71,17 @@ class GainerProcess(ABC):
         now = self.datetime_now
         date = str(now.date())
         time = str(now.time()).replace(':', '-')[:-10]
-        if self.source == 'wsj':
-            file_name = 'wsjgainers_' + date + '_at_' + time + '.csv'
-            self.norm_df.to_csv(file_name)
-        else:
+        if self.source == 'yahoo':
             file_name = 'ygainers_' + date + '_at_' + time + '.csv'
             self.norm_df.to_csv(file_name)
+        elif self.source == 'wsj':
+            file_name = 'wsjgainers_' + date + '_at_' + time + '.csv'
+            self.norm_df.to_csv(file_name)
+        elif self.source == 'sa':
+            file_name = 'sagainers_' + date + '_at_' + time + '.csv'
+            self.norm_df.to_csv(file_name)
+        else:
+            print("Unable to save, make sure argument is one of [yahoo, wsj, sa]")
 
         # file clearnup
         os.remove('raw_data.csv')
