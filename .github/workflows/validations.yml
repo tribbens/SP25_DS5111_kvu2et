@@ -21,7 +21,8 @@ jobs:
       - name: Install dependencies
         run: |
           make update
-      - name: Test with pytest
+      - name: Lint with pylint and test with pytest
         run: |
           source env/bin/activate
+          make lint
           make test
