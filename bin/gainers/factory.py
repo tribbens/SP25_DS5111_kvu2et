@@ -18,12 +18,18 @@ class GainerFactory:
     '''
 
     def __init__(self, choice):
+        '''
+        Placeholder class docstring
+        '''
         assert choice in ['yahoo', 'wsj', 'sa',  'test'], f"Unrecognized gainer type {choice}"
         self.choice = choice
         # define datetime_now
         self.datetime_now = datetime.now()
 
     def get_downloader(self):
+        '''
+        Placeholder class docstring
+        '''
         # capture current date and time
         self.datetime_now = datetime.now(ZoneInfo("America/New_York"))
         # trigger off url to return correct downloader
@@ -35,6 +41,9 @@ class GainerFactory:
             return GainerDownloadSA()
 
     def get_processor(self):
+        '''
+        Placeholder class docstring
+        '''
         # trigger off url to return correct downloader
         if self.choice == 'yahoo':
             return GainerProcessYahoo(self.datetime_now)

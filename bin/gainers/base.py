@@ -20,6 +20,9 @@ class GainerDownload(ABC):
 
     @abstractmethod
     def download(self):
+        '''
+        Placeholder class docstring
+        '''
         env = os.environ.copy()
         env['DBUS_SESSION_BUS_ADDRESS'] = '/dev/null'
         command = [
@@ -49,6 +52,9 @@ class GainerProcess(ABC):
     Placeholder class docstring
     '''
     def __init__(self, fname, source, datetime_now):
+        '''
+        Placeholder class docstring
+        '''
         self.fname = fname
         self.source = source
         self.datetime_now = datetime_now
@@ -56,6 +62,9 @@ class GainerProcess(ABC):
 
     @abstractmethod
     def normalize(self):
+        '''
+        Placeholder class docstring
+        '''
         raw_df = pd.read_csv(self.fname)
         if self.source == 'yahoo':
             norm_df = raw_df[['Symbol', 'Price', 'Change', 'Change %']]
@@ -84,6 +93,9 @@ class GainerProcess(ABC):
 
     @abstractmethod
     def save_with_timestamp(self):
+        '''
+        Placeholder class docstring
+        '''
         now = self.datetime_now
         date = str(now.date())
         time = str(now.time()).replace(':', '-')[:-10]
