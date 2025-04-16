@@ -21,7 +21,8 @@ class GainerDownload(ABC):
             "--timeout=10000",
             self.url
         ]
-        result = subprocess.run(command, shell=True, env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        result = subprocess.run(command, capture_output=True, text=True,
+            check=True, env=env)
         html = result.stdout
 
         with open("raw_data.html", "w") as f:
