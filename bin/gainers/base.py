@@ -71,8 +71,7 @@ class GainerProcess(ABC):
             # fixing the price to remove unnecessary info
             norm_df['price'] = norm_df['price'].str.extract(r'^([\d.]+)\s+\+')
             # updating change percent to remove special characters
-            norm_df['price_percent_change'] =
-                norm_df['price_percent_change'].str.strip('+').str.strip('%')
+            norm_df['price_percent_change'] = norm_df['price_percent_change'].str.strip('+').str.strip('%')
         elif self.source == 'wsj':
             norm_df = raw_df[['Unnamed: 0', 'Last', 'Chg', '% Chg']]
             norm_df.columns = ['symbol', 'price', 'price_change', 'price_percent_change']
