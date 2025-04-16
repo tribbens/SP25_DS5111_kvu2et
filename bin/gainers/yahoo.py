@@ -20,3 +20,5 @@ class GainerProcessYahoo(GainerProcess):
 
     def save_with_timestamp(self):
         super().save_with_timestamp()
+
+        print("Saved yahoo gainers csv file with current date and time")

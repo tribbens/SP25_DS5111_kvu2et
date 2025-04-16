@@ -20,3 +20,5 @@ class GainerProcessWSJ(GainerProcess):
 
     def save_with_timestamp(self):
         super().save_with_timestamp()
+
+        print("Saved wsj gainers csv file with current date and time")
