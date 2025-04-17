@@ -7,11 +7,18 @@ import glob
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'bin')))
 from gainers.factory import GainerFactory
 
+ex_dir = "collected_data/"
 fname_df = pd.read_csv("fname_list.csv")
 fname_list = list(fname_df['Name'])
 
 for fname in fname_list:
     new_fname = fname.strip('-')
+    !mv fname new_fname
+
+
+
+
+
     if new_fname[:4] == 'ygai':
         factory = GainerFactory('yahoo', fname)
         normalizer = factory.get_processor()
@@ -32,3 +39,4 @@ for fname in fname_list:
 
     else:
         pass
+
