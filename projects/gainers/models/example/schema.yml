@@ -10,10 +10,19 @@ models:
           - unique
           - not_null
           - accepted_values:
-              values:  ['un', 'deux', 'troi']
+              values:  ['un', 'deux', 'trois']
 
   - name: enfr
-    description: "insure all values in en column are also in ende"
+    description: "ensure all values in en column are also in enfr"
+    columns:
+      - name: EN
+        data_tests:
+          - relationships:
+              to: ref('enfr')
+              field: EN
+
+  - name: ende
+    description: "ensure all values in en column are also in ende"
     columns:
       - name: EN
         data_tests:
