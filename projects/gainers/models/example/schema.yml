@@ -1,24 +1,4 @@
-
 version: 2
-
-models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
-          - unique
-          - not_null
-
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
-          - unique
-          - not_null
 
   - name: french
     description: "test french table"
@@ -29,7 +9,7 @@ models:
           - unique
           - not_null
           - accepted_values:
-              values: ['un', 'deux']
+              values:  ['un', 'deux', 'troi']
 
   - name: enfr
     description: "insure all values in en column are also in ende"
