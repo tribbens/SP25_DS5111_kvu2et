@@ -1,46 +1,58 @@
-## Entity Relationship Diagram (ERD)
+# Entity Relationship Diagram for Daily Stock Gainer List Analysis
 
-The following diagram represents the relationships between various classes in our stock market gainer processing pipeline:
+## ERD (in Mermaid.js)
 
 ```mermaid
 erDiagram
-    GAINER_FACTORY {
-        string choice
+    %% Raw data ingested daily
+    RAW_GAINER_RECORDS {
+        VARCHAR symbol
+        DATE   date
+        FLOAT  high
+        FLOAT  low
+        FLOAT  open
+        FLOAT  close
+        BIGINT volume
     }
-    GAINER_FACTORY ||--o{ GAINER_DOWNLOAD : uses
-    GAINER_FACTORY ||--o{ GAINER_PROCESS : uses
-    GAINER_DOWNLOAD {
-        string url
-        void download()
+    %% Dimension tables
+    SYMBOLS {
+        VARCHAR symbol PK
     }
-    GAINER_PROCESS {
-        string fname
-        string source
-        datetime datetime_now
-        void normalize()
-        void save_with_timestamp()
+    DATES {
+        DATE   date PK
+        INT    week_number
+        DATE   week_start
     }
-    GAINER_DOWNLOAD }|--o{ GAINER_DOWNLOAD_YAHOO : is_a
-    GAINER_DOWNLOAD }|--o{ GAINER_DOWNLOAD_WSJ : is_a
-    GAINER_DOWNLOAD }|--o{ GAINER_DOWNLOAD_SA : is_a
-    GAINER_PROCESS }|--o{ GAINER_PROCESS_YAHOO : is_a
-    GAINER_PROCESS }|--o{ GAINER_PROCESS_WSJ : is_a
-    GAINER_PROCESS }|--o{ GAINER_PROCESS_SA : is_a
-    GAINER_DOWNLOAD_YAHOO {
-        string url
+    %% Intermediate aggregates
+    DAILY_COUNTS {
+        VARCHAR symbol FK
+        DATE    date FK
+        INT     appearance_count
     }
-    GAINER_DOWNLOAD_WSJ {
-        string url
+    DAILY_STATS {
+        VARCHAR symbol FK
+        DATE    date FK
+        FLOAT   avg_high
+        FLOAT   avg_low
+        FLOAT   avg_open
+        FLOAT   avg_close
+        BIGINT  total_volume
     }
-    GAINER_DOWNLOAD_SA {
-        string url
+    %% Final weekly summaries
+    WEEKLY_SUMMARY {
+        VARCHAR symbol FK
+        DATE    week_start FK
+        INT     weekly_appearances
+        BIGINT  weekly_volume
+        FLOAT   avg_weekly_price_range
     }
-    GAINER_PROCESS_YAHOO {
-        string source
-    }
-    GAINER_PROCESS_WSJ {
-        string source
-    }
-    GAINER_PROCESS_SA {
-        string source
-    }
+
+    %% Relationships
+    RAW_GAINER_RECORDS }o--|| SYMBOLS       : "belongs to"
+    RAW_GAINER_RECORDS }o--|| DATES         : "occurs on"
+    SYMBOLS           ||--o{ DAILY_COUNTS  : "aggregated in"
+    DATES             ||--o{ DAILY_COUNTS  : "aggregated by"
+    SYMBOLS           ||--o{ DAILY_STATS   : "aggregated in"
+    DATES             ||--o{ DAILY_STATS   : "aggregated by"
+    SYMBOLS           ||--o{ WEEKLY_SUMMARY: "summarized in"
+    DATES             ||--o{ WEEKLY_SUMMARY: "week of"
