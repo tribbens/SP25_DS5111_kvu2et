@@ -1,3 +1,5 @@
 -- enfr.sql
-SELECT *
-FROM {{ source('kvu2et_raw', 'enfr_raw') }}
+SELECT EN
+FROM DATA_SCIENCE.KVU2ET.ENGLISH
+SELECT FR
+FROM DATA_SCIENCE.KVU2ET.FRENCH

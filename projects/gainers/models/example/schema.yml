@@ -1,5 +1,6 @@
 version: 2
 
+models:
   - name: french
     description: "test french table"
     columns:

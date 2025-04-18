@@ -1,3 +1,5 @@
 -- ende.sql
-SELECT *
-FROM {{ source('kvu2et_raw', 'ende_raw') }}
+SELECT EN
+FROM DATA_SCIENCE.KVU2ET.ENGLISH
+SELECT DE
+FROM DATA_SCIENCE.KVU2ET.GERMAN
