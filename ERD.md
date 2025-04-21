@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     RAW_GAINERS {
         date                   DATE
@@ -38,3 +39,4 @@ erDiagram
     RAW_GAINERS          ||--o{ PERCENT_CHANGE_HISTOGRAM : bins into
     DAILY_AGGREGATES     ||--|{ WEEKLY_SUMMARY          : feeds
     SYMBOL_FREQUENCY     ||--|{ WEEKLY_SUMMARY          : feeds
+```
