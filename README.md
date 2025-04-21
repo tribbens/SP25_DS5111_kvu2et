@@ -1,6 +1,7 @@
 [![Feature Validation](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml/badge.svg)](https://github.com/tribbens/SP25_DS5111_kvu2et/actions/workflows/validations.yml)
 
-# Setup GitHub Credentials
+# Getting Started
+## Setup GitHub Credentials
 Enter the following code to create new SSH credentials but substitute with the email associated with your GitHub account.
 ```
 ssh-keygen -t ed25519 -C "<your_github_email>"
@@ -10,24 +11,24 @@ ssh-keygen -t ed25519 -C "<your_github_email>"
 * Name it to match the name of your vm
 * Type ```cat id_ed25519.pub``` and copy/paste this key into the field on GitHub > "Save"
 * Confirm on your VM with ```ssh -T -i ed25519 git@github.com``` > response should include "You've successfully authenticated..."
-# Clone GitHub repository
+## Clone GitHub repository
 Navigate into the folder you want to clone this repository into. Likely your home folder.
 Next, enter the following command:
 ```
 git clone git@github.com:tribbens/SP25_DS5111_kvu2et.git
 ```
 You now have the repository on your VM and can run scripts directly.
-# Initial Setup of VM
+## Initial Setup of VM
 Navigate into the folder for the repository you just cloned. Then type the following code into the command line. It will setup the VM.
 ```
 bash init.sh
 ```
-# Install Chrome Headless Browser
+## Install Chrome Headless Browser
 Type the following code to run the script to install Chrome headless browser:
 ```
 bash scripts/install_chrome_headless.sh
 ```
-# Further Setup of Virtual Environment
+## Further Setup of Virtual Environment
 * Type this code to setup the env
 ```
 make env
@@ -36,37 +37,45 @@ make env
 ```
 make update
 ```
-# Activating and Testing
+
+# Using Module
+## About the Gainers Module
+* This module will download the html data with a headless browser and process it into a standard and uniform format, regardless of the option chosen.
+* When running this module, you have three options to choose from:
+  * yahoo - downloads data from Yahoo Finance
+  * wsj - downloads data from WSJ
+  * sa - downloads data from StockAnalysis
+## Activating, Linting, & Testing Code
 * Activate the env with this code:
 ```
-. env/bin/activate
+source env/bin/activate
 ```
-* Let's test the headless browser by typing the following code:
+* Lint the gainers module with pylint:
 ```
-make ygainers.csv
+make lint
 ```
-* Move the file "ygainers.csv" to "sample_data" by typing:
+You should get a score above 9.0 but likely not 10.0
+* Test the gainers module with pytest:
 ```
-mv ygainers.csv sample_data/
+make test
 ```
-# Confirming Structure
-Let's check the structure to confirm everything worked. Type this code, replacing the bracketed part with the full path to your project repository:
+All tests should pass but there may be a few warnings, which is okay.
+## Running the Gainers Module
+* Let's try to download some data from Yahoo Finance:
 ```
-tree <your project-repo> -I env
+make gainers SRC=yahoo
 ```
-You should have an output similar to mine shown here:
+* It should show up in your directory with the current date with this command:
 ```
-/home/ubuntu/SP25_DS5111_kvu2et
-├── README.md
-├── google-chrome-stable_current_amd64.deb
-├── init.sh
-├── makefile
-├── requirements.txt
-├── sample_data
-│   └── ygainers.csv
-├── scripts
-│   └── install_chrome_headless.sh
-└── ygainers.html
+ls
 ```
-
-### If your output looks similar to mine (paying special attention to "ygainers.csv" showing up), everything is setup properly!
+* The format of the file should be: ygainers_yyyy-mm-dd_at_hh-mm.csv
+* If a file shows up with a date and time close to when you typed the command, it should have worked!
+* Just to confirm, type the following command where file_name is the file that just showed up:
+```
+cat <file_name>
+```
+* You should now see rows of comma-separated values. If it does, it worked properly!
+* Repeat with the other two options which are as follows:
+  * Replace 'yahoo' with 'wsj' - the resulting files will have the same format but "wsjgainers_..." instead of "ygainers_..."
+  * Replace 'yahoo' with 'sa' - the resulting files will have the same format but "sagainers_..." instead of "ygainers_..."

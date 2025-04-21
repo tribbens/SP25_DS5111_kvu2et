@@ -1,0 +1,26 @@
+'''
+This class allows us to make our selection and run everything
+based on the user input for the variable SRC.
+'''
+import sys
+import os
+
+# Make 'bin' importable
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from bin.gainers.factory import GainerFactory
+from bin.gainers.process_template import ProcessGainer
+
+# this file brings everything together
+if __name__=="__main__":
+    # Make our selection, 'one' choice
+    CHOICE = str(sys.argv[1])
+
+    # let our factory get select the family of objects for processing
+    factory = GainerFactory(CHOICE, 'raw_data.csv')
+    downloader = factory.get_downloader()
+    normalizer = factory.get_processor()
+
+    # create our process
+    runner = ProcessGainer(downloader, normalizer)
+    runner.process()
