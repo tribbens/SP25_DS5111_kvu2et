@@ -1,58 +1,40 @@
-# Entity Relationship Diagram for Daily Stock Gainer List Analysis
-
-## ERD (in Mermaid.js)
-
-```mermaid
 erDiagram
-    %% Raw data ingested daily
-    RAW_GAINER_RECORDS {
-        VARCHAR symbol
-        DATE   date
-        FLOAT  high
-        FLOAT  low
-        FLOAT  open
-        FLOAT  close
-        BIGINT volume
+    RAW_GAINERS {
+        date                   DATE
+        symbol                 VARCHAR
+        price                  NUMBER
+        price_change           NUMBER
+        price_percent_change   NUMBER
     }
-    %% Dimension tables
-    SYMBOLS {
-        VARCHAR symbol PK
+    DAILY_AGGREGATES {
+        date                   DATE
+        avg_price              NUMBER
+        min_price              NUMBER
+        max_price              NUMBER
+        avg_price_change       NUMBER
+        avg_percent_change     NUMBER
+        total_gainers          INTEGER
     }
-    DATES {
-        DATE   date PK
-        INT    week_number
-        DATE   week_start
+    SYMBOL_FREQUENCY {
+        symbol                 VARCHAR
+        occurrence_count       INTEGER
     }
-    %% Intermediate aggregates
-    DAILY_COUNTS {
-        VARCHAR symbol FK
-        DATE    date FK
-        INT     appearance_count
+    PERCENT_CHANGE_HISTOGRAM {
+        date                   DATE
+        change_bin             VARCHAR
+        bin_count              INTEGER
     }
-    DAILY_STATS {
-        VARCHAR symbol FK
-        DATE    date FK
-        FLOAT   avg_high
-        FLOAT   avg_low
-        FLOAT   avg_open
-        FLOAT   avg_close
-        BIGINT  total_volume
-    }
-    %% Final weekly summaries
     WEEKLY_SUMMARY {
-        VARCHAR symbol FK
-        DATE    week_start FK
-        INT     weekly_appearances
-        BIGINT  weekly_volume
-        FLOAT   avg_weekly_price_range
+        week_start             DATE
+        symbol                 VARCHAR
+        total_occurrences      INTEGER
+        avg_price              NUMBER
+        avg_price_change       NUMBER
+        avg_percent_change     NUMBER
     }
 
-    %% Relationships
-    RAW_GAINER_RECORDS }o--|| SYMBOLS       : "belongs to"
-    RAW_GAINER_RECORDS }o--|| DATES         : "occurs on"
-    SYMBOLS           ||--o{ DAILY_COUNTS  : "aggregated in"
-    DATES             ||--o{ DAILY_COUNTS  : "aggregated by"
-    SYMBOLS           ||--o{ DAILY_STATS   : "aggregated in"
-    DATES             ||--o{ DAILY_STATS   : "aggregated by"
-    SYMBOLS           ||--o{ WEEKLY_SUMMARY: "summarized in"
-    DATES             ||--o{ WEEKLY_SUMMARY: "week of"
+    RAW_GAINERS          ||--o{ DAILY_AGGREGATES         : aggregates into
+    RAW_GAINERS          ||--o{ SYMBOL_FREQUENCY         : counts into
+    RAW_GAINERS          ||--o{ PERCENT_CHANGE_HISTOGRAM : bins into
+    DAILY_AGGREGATES     ||--|{ WEEKLY_SUMMARY          : feeds
+    SYMBOL_FREQUENCY     ||--|{ WEEKLY_SUMMARY          : feeds
